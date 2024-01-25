@@ -1,47 +1,40 @@
-import React from 'react';
-import loadData from './getCountries';
-import Image from 'next/image'
+import { loadData } from "@/lib/client";
+
 
 async function HomePage() {
-  try {
-    const data = await loadData();
-
-    console.log(data);
-
-    return (
-      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {data.countries.map(country => (
-          <div
-            key={country.code}
-            className="country-container bg-white shadow-md rounded-md overflow-hidden"
-          >
-            <Image
-              src={country.flag}
-              alt={`${country.name} Flag`}
-              className="w-full h-40 object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold mb-2">{country.name}</h2>
-              <p>Native: {country.native}</p>
-              <p>Capital: {country.capital}</p>
-              <p>Currency: {country.currency}</p>
-              <div>
-                Languages:
-                <ul>
-                  {country.languages.map(language => (
-                    <li key={language.code}>{language.name}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  } catch (error) {
-    console.error('Error loading country data:', error);
-    return <div>Error loading country data</div>;
-  }
+  const countries = await loadData()
+  return (
+  <>
+    <aside className="sidebar">
+      <h2>Home</h2>
+      <h2>Crear pais</h2>
+      <h2>Gestionar pais</h2>
+    </aside>
+    <nav >
+      <input className="search-input" type="text" placeholder="Encuentra tu pais"></input>
+    </nav>
+    
+    
+    
+<section className="container">
+  {countries.map(country => (
+    <article className="country-item" key={country.code}>
+      <h1>
+        <span>
+        <img src={`https://flagicons.lipis.dev/flags/4x3/${country.code.toLowerCase()}.svg`} />
+        </span>
+        {country.name}
+      </h1>
+        <p>
+        {country.capital}
+        </p>
+        
+      </article>
+    ))}
+  </section>
+  </>
+ 
+  ) 
+  
 }
-
 export default HomePage;
