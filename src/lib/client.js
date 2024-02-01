@@ -22,10 +22,12 @@ export async function loadData() {
       countries {
         code
         name
-        native
         capital
         currency
         languages {
+          name
+        }
+        continent{
           code
           name
         }
