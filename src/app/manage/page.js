@@ -37,46 +37,48 @@ export default function Manage() {
     };
     return (
         <>
-            <div>
-                <div>
+            <div className="page-container">
+                <div className="row">
                     <h2>Gestionar País</h2>
                 </div>
-                <div>
+                <div className="row flex-center">
                     <form>
                         <label htmlFor="cod-search"> Código País </label>
-                        <input type="text" name="cod-search" />
-                        <input type="submit" value="Consultar" />
+                        <input type="text" className="custom-input" name="cod-search" />
+                        <input type="submit" value="Consultar" className="btn" />
                     </form>
                 </div>
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <div>
+                <div className="row">
+                    <form onSubmit={handleSubmit} className="form-container">
+                        <div className="form-column">
                             <label htmlFor="code"> Código </label>
-                            <input type="text" name="code" value={form.code} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="code" value={form.code} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="name"> Nombre </label>
-                            <input type="text" name="name" value={form.name} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="name" value={form.name} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="language"> Lengua </label>
-                            <input type="text" name="language" value={form.language} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="language" value={form.language} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="continent"> Contiente </label>
-                            <input type="text" name="continent" value={form.continent} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="continent" value={form.continent} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="capital"> Capital </label>
-                            <input type="text" name="capital" value={form.capital} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="capital" value={form.capital} onChange={handleChange} />
+                        </div>
+                        <div className="form-column">
+                            <label htmlFor="currency"> Moneda </label>
+                            <input type="text" className="custom-input" name="currency" value={form.currency} onChange={handleChange} />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <button type="button" onClick={handleReset} className="btn btn-clean">Eliminar</button>
                         </div>
                         <div>
-                            <label htmlFor="currency"> Moneda </label>
-                            <input type="text" name="currency" value={form.currency} onChange={handleChange} />
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <button type="button" onClick={handleReset}>Limpiar</button>
-                            <input type="submit" value="Consultar" />
+                            <input type="submit" value="Actualizar" className="btn btn-create" />
                         </div>
                     </form>
                 </div>

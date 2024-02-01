@@ -34,38 +34,40 @@ export default function Create() {
     };
     return (
         <>
-            <div className={styles.container}>
-                <div className={styles.row}>
+            <div className="page-container">
+                <div className="row">
                     <h2>Crear País</h2>
                 </div>
-                <div className={styles.row}>
+                <div className="row flex-center">
                     <form>
                         <label htmlFor="cod-search"> Código País </label>
-                        <input type="text" name="cod-search" />
-                        <input type="submit" value="Consultar" />
+                        <input type="text" className="custom-input" name="cod-search" />
+                        <input type="submit" value="Consultar" className="btn" />
                     </form>
                 </div>
-                <div className={styles.row}>
-                    <form onSubmit={handleSubmit}>
-                        <div>
+                <div className="row">
+                    <form onSubmit={handleSubmit} className="form-container">
+                        <div className="form-column">
                             <label htmlFor="code"> Código </label>
-                            <input type="text" name="code" value={form.code} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="code" value={form.code} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="name"> Nombre </label>
-                            <input type="text" name="name" value={form.name} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="name" value={form.name} onChange={handleChange} />
                         </div>
-                        <div>
+                        <div className="form-column">
                             <label htmlFor="language"> Lengua </label>
-                            <input type="text" name="language" value={form.language} onChange={handleChange} />
+                            <input type="text" className="custom-input" name="language" value={form.language} onChange={handleChange} />
+                        </div>
+                        <div className="form-column">
+                            <label htmlFor="continent"> Continente </label>
+                            <input type="text" className="custom-input" name="continent" value={form.continent} onChange={handleChange} />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <button type="button" onClick={handleReset} className="btn btn-clean">Limpiar</button>
                         </div>
                         <div>
-                            <label htmlFor="continent"> Contiente </label>
-                            <input type="text" name="continent" value={form.continent} onChange={handleChange} />
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <button type="button" onClick={handleReset}>Limpiar</button>
-                            <input type="submit" value="Consultar" />
+                            <input type="submit" value="Crear" className="btn btn-create" />
                         </div>
                     </form>
                 </div>
