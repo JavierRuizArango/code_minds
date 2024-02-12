@@ -86,7 +86,7 @@ export default function Create() {
             </div>
             <div className="form-column">
               <label htmlFor="language"> Lengua </label>
-              <input type="text" className="custom-input" name="language" value={""} onChange={handleChange} />
+              <input type="text" className="custom-input" name="language" value={country.language} onChange={handleChange} />
             </div>
             <div className="form-column">
               <label htmlFor="continent"> Continente </label>

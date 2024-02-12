@@ -2,8 +2,8 @@ const express = require("express");
 const cors = require('cors');
 const app = express();
 const port = 3001;
-const mongo = require('./database.js')
-const { Country } = require("./schema.js")
+const mongo = require('../db/database.js');
+const { Country } = require('../db/schema.js');
 
 app.use(express.json());
 app.use(cors());

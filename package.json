@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "start1": "nodemon ./src/app/server.js"
+    "start1": "nodemon ./src/api/server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.2",

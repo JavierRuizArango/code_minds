@@ -11,11 +11,11 @@ function App() {
         },
         {
             name: 'Crear país',
-            path: '/create'
+            path: '/pages/create'
         },
         {
             name: 'Gestionar país',
-            path: '/manage'
+            path: '/pages/manage'
         }
     ];
     const pathname = usePathname();

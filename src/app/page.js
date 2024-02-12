@@ -1,17 +1,11 @@
 'use client'
 import { useEffect, useState } from "react";
-import CountryCard from "./CountryCard";
+import CountryCard from "./components/CountryCard";
+import useCountries from "@/Hooks/consultCountry";
 
 function HomePage() {
-  const [countries, setCountries] = useState([])
-  const [inputValue, setInputValue] = useState("")
-
-  useEffect(() => {
-    fetch('http://localhost:3001')
-    .then(res => res.json())
-    .then(data => setCountries(data))
-  }, [])
-
+  const [inputValue, setInputValue] = useState("");
+  const countries = useCountries(); 
   console.log(countries);
 
   return (

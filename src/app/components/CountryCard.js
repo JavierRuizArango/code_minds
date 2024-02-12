@@ -3,7 +3,7 @@ import Image from 'next/image'
 const imageStyles = {
     position: 'relative',
     width: '100%',
-    height: '90px',
+    height: '121px',
 };
 
 export default function CountryCard({ country }) {
