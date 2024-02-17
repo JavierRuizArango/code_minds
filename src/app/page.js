@@ -11,7 +11,7 @@ function HomePage() {
   return (
     <>
       <div>
-        <div>
+        <div  >
           <input className="search-input" type="text" placeholder="Encuentra tu pais" onChange={(e) => setInputValue(e.target.value)}></input>
         </div>
         <section className="countries-grid">
