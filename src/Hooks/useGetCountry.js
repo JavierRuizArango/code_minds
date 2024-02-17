@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react"
 
 const useGetCountry = () => {
-    const [country, setCountries] = useState({})
+    const [country, setCountries] = useState({
+      code: '',
+      name: '',
+      language: '',
+      continent: '',
+    })
     const [code, setCode] = useState("")
 
     useEffect(() => {
@@ -30,7 +35,11 @@ const useGetCountry = () => {
             })
         })
         .then(res => res.json())
-        .then(data => setCountries(data.data.country))
+        .then(data => {
+          if (data.data.country) {
+            setCountries(data.data.country)
+          }
+        })
     }, [code])
     
 

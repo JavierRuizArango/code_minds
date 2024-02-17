@@ -13,12 +13,13 @@ export default function Create() {
   });
 
   const handleReset = () => {
-    setForm({
+    setForm( {
       code: '',
       name: '',
       language: '',
       continent: '',
     });
+    console.log("form",form);
   };
 
   const handleSubmit = (event) => {
@@ -27,19 +28,16 @@ export default function Create() {
     console.log(form);
   };
 
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
-  };
+   
 
   const { country, setCode } = useGetCountry()
   const [inputValue, setInputValue] = useState("")
+
   const handleClick = () => {
     setCode(inputValue.toUpperCase())
   }
-  console.log(country);
+  console.log('---- country ----', country);
+
   const handleClickCreate = () => {
     fetch('http://localhost:3001', {
       method: "POST",
@@ -64,42 +62,57 @@ export default function Create() {
   return (
     <>
       <div className="page-container">
+        
         <div className="row">
           <h2>Crear País</h2>
         </div>
+
         <div className="row flex-center">
           <form>
             <label htmlFor="cod-search"> Código País </label>
             <input type="text" className="custom-input" name="cod-search" maxLength={2} onChange={(e) => setInputValue(e.target.value)} />
-            <input value="Consultar" className="btn" onClick={handleClick} />
+
+            <input  value="Consultar" className="btn" onClick={handleClick} />
           </form>
+
         </div>
-        {country !== null ? <div className="row">
+        
+        <div className="row">
           <form onSubmit={handleSubmit} className="form-container">
+
             <div className="form-column">
               <label htmlFor="code"> Código </label>
-              <input type="text" className="custom-input" name="code" value={form.code} onChange={handleChange} />
+              <input type="text" className="custom-input" name="code" value={country.code} readOnly={true} />
             </div>
+
             <div className="form-column">
               <label htmlFor="name"> Nombre </label>
-              <input type="text" className="custom-input" name="name" value={country.name} onChange={handleChange} disabled />
+              <input type="text" className="custom-input" name="name" value={country.name} readOnly={true} />
             </div>
+
             <div className="form-column">
               <label htmlFor="language"> Lengua </label>
-              <input type="text" className="custom-input" name="language" value={country.language} onChange={handleChange} />
+              <input type="text" className="custom-input" name="language" value={country?.languages?.[0]?.name} readOnly={true}/>
+              
             </div>
+          
             <div className="form-column">
               <label htmlFor="continent"> Continente </label>
-              <input type="text" className="custom-input" name="continent" value={""} onChange={handleChange} />
+              <input type="text" className="custom-input" name="continent" value={country.continent ? country.continent.name : ""} readOnly={true} />
             </div>
+
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
               <button type="button" onClick={handleReset} className="btn btn-clean">Limpiar</button>
             </div>
+
             <div>
               <input type="submit" value="Crear" className="btn btn-create" onClick={handleClickCreate} />
             </div>
+
           </form>
-        </div> : null}
+
+        </div>
+
       </div>
     </>
   )

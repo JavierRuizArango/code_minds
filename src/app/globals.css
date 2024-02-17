@@ -9,17 +9,18 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 325px 1fr;
+  grid-template-columns: 350px 1fr;
 }
 
 main {
-  padding: 10px 27px;
+  padding: 10px 2rem;
 }
+
 
 .sidebar {
   width: 100%;
   min-height: 100vh;
-  padding: 10px;
+  padding: 20px;
   background-color: #676767;
 }
 
@@ -36,13 +37,13 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 20px;
+  gap: 25px;
   margin-top: 30px;
 }
 
 .nav-link {
   color: #fff;
-  font-weight: 600;
+  font-weight: 900;
   text-decoration: none;
 }
 
@@ -56,17 +57,19 @@ main {
 
 
 .countries-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  /* grid-template-columns: repeat(3, 1fr); */
   gap: 20px;
-  height: 90vh;
-  overflow-y: scroll;
+  height: 100vh;
+  padding-left: 4rem;
+  flex-wrap: wrap;
+  /* overflow-y: scroll; */
 
   /* IE and Edge */
   -ms-overflow-style: none;
   /* Firefox */
-  scrollbar-width: none;
-  padding: 2rem;
+  scrollbar-width: auto;
+ 
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -78,9 +81,11 @@ main {
   background-color: white;
   border-radius: 2rem;
   display: grid;
-  grid-template-rows: 3fr 1fr ;
-  max-height: 200px;
+  width: 250px;
+  max-height: 160px;
+  
 }
+
 .country-item:hover {
   cursor: pointer;
   scale: 0.95;
@@ -94,9 +99,9 @@ main {
 
 
 .country-info {
-  padding: 1rem;
+  padding: 5px;
   display: grid;
-  grid-template-columns: 0.8fr 3fr;
+  grid-template-columns: 1fr 3fr;
 }
 
 .country-info img {
@@ -114,14 +119,17 @@ main {
   font-size: 0.9rem;
 }
 
+.card-info {
+  
+}
+
 .search-input {
-  margin: 23px;
-  padding: 21px;
+  margin: 30px;
+  padding: 20px;
   width: 700px;
   border-radius: 3rem;
   background-color: #0a3f59;
   font-size: large;
-  
 
 }
 
