@@ -37,17 +37,15 @@ app.get("/country/:code", async (req, res) => {
 })
 
 app.get("/continent/:code", async (req, res) =>{
-   
-  const continentCode = req.params.code;
-
-  try {
-    // Realizar la búsqueda de los países por el código de continente
-    const countries = await Country.find({ continentCode });
-    res.json(countries);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error al obtener los países por continente");
-  }
+  const { code } = req.params;
+  const continent = await Country.find( {  "continent.code": code } )
+  .then((continent ) => {
+    if (continent) {
+      res.status(200).json(continent)
+    }else{
+      res.status(404).send("Not found")
+    }
+  })
 });
 
 app.post("/", (req, res) =>{
