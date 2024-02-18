@@ -13,7 +13,7 @@ import Image from 'next/image'
 const imageStyles = {
     position: 'relative',
     width: '100%',
-    height: '100px',
+    height: '110px',
 };
 
 export default function CountryCard({ country }) {
@@ -31,7 +31,7 @@ export default function CountryCard({ country }) {
                 <img style={{ width: '37px' }} src={`https://flagicons.lipis.dev/flags/4x3/${country.code.toLowerCase()}.svg`} />
                 <div>
                     <h4>{country.name}</h4>
-                    <p>{country.capital}</p>
+                    <p>{country.continent.name}</p>
                 </div>
             </div>
         </article>
