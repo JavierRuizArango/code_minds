@@ -13,7 +13,7 @@ const FilterContinent = ({setCodeContinentController}) => {
       <button onClick={() => setCodeContinentController('NA')}>Nort America</button>
       <button onClick={() => setCodeContinentController('AS')}>Asia</button>
       <button onClick={() => setCodeContinentController('OC')}>Oceania</button>
-      <button onClick={() => setCodeContinentController('AF')}>Afria</button>
+      <button onClick={() => setCodeContinentController('AF')}>Africa</button>
     </div>
   )
 }
