@@ -48,17 +48,29 @@
           {console.log('countries since home', countries)}
           <section className="countries-grid">
             
-            {currentCountries.map((country) => {
-              if (country.name.toLowerCase().startsWith(inputValue.toLowerCase())) {
-                return <CountryCard
-                 onClick={() => setSelectCountry(country)}
-                 onClick2={() => setSelectCountry(false)}
-                 country={country} 
-                 key={country.code}/>
-              }else {
-                return null
-              }
-            })}
+            {inputValue.length > 0 ? (
+              countries.map((country) => {
+                if (country.name.toLowerCase().startsWith(inputValue.toLowerCase())) {
+                  return <CountryCard
+                   onClick={() => setSelectCountry(country)} 
+                   country={country} 
+                   key={country.code}/>
+                }else {
+                  return null
+                }
+              })
+            ): (
+              currentCountries.map((country) => {
+                if (country.name.toLowerCase().startsWith(inputValue.toLowerCase())) {
+                  return <CountryCard
+                   onClick={() => setSelectCountry(country)} 
+                   country={country} 
+                   key={country.code}/>
+                }else {
+                  return null
+                }
+              })
+            )}
           </section>
           {selecCountry ? <CardInfo country={selecCountry} close={() => setSelectCountry(false)} /> : null}
           

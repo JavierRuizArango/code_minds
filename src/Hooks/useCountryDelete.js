@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
  function useCountryDelete() { 
 
   const handleDelete = (code) => {
@@ -12,7 +14,22 @@
       return response.json();
     })
     .then((data) => {
-      alert("Country deleted successfully");
+      
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: "country deleted"
+      });
       console.log("Respuesta de la API:", data);
     })
     .catch((error) => {
