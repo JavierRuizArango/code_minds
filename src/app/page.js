@@ -7,10 +7,11 @@
 
   function HomePage() {
     const [inputValue, setInputValue] = useState("");
-    const {countries } = useCountries(); 
+    const {countries, setCodeContinent} = useCountries(); 
     const [filterContinent, setFilterContinent] = useState(false);
     const [selecCountry, setSelectCountry] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [codeContinentController, setCodeContinentController] = useState('All');
     const countriesPerPage = 9;
 
     const indexOfLastCountry = currentPage * countriesPerPage;
@@ -19,6 +20,9 @@
     // Obtener los países que se mostrarán en la página actual
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
   
+    useEffect(() => {
+      setCodeContinent(codeContinentController)
+    }, [codeContinentController])
     
     const paginateNext = () => {
       if (indexOfLastCountry < countries.length) {
@@ -40,7 +44,7 @@
             <input className="search-input" type="text" placeholder="Encuentra tu pais" onChange={(e) => setInputValue(e.target.value)}></input>
             <button onClick={() => setFilterContinent(!filterContinent)}>Filtrar por continente</button>
           </div>
-          {filterContinent ? <FilterContinent/> : null}
+          {filterContinent ? <FilterContinent setCodeContinentController={setCodeContinentController}/> : null}
           {console.log('countries since home', countries)}
           <section className="countries-grid">
             

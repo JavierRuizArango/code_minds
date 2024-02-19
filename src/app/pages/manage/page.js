@@ -7,9 +7,9 @@ import useCountryDelete from '@/Hooks/useCountryDelete';
 
 export default function Manage() {
 
-  const {country, setCode} = useCountryCode()
+  const {country, handleConsult} = useCountryCode()
   const [inputValue, setInputValue] = useState("")
-  const { setCodeCountry } = useCountryDelete()
+  const { handleDelete } = useCountryDelete()
 
   const [form, setForm] = useState({
     code: '',
@@ -39,13 +39,7 @@ export default function Manage() {
     console.log(form);
   };
 
-  const handleInput = () => {
-    setCode(inputValue.toUpperCase())
-  }
-
-  const handleDelete = () => {
-    setCodeCountry(inputValue.toUpperCase())
-  }
+  
 
   const handleChange = (event) => {
     setForm({
@@ -66,7 +60,7 @@ export default function Manage() {
             <label htmlFor="cod-search"> Código País </label>
             <input type="text" className="custom-input" maxLength={2} name="cod-search" onChange={(e) => setInputValue(e.target.value)}/>
 
-            <input value="Consultar" className="btn" onClick={handleInput}/>
+            <input value="Consultar" className="btn" onClick={() => handleConsult(inputValue.toUpperCase())}/>
           </form>
         </div>
 
@@ -104,7 +98,7 @@ export default function Manage() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <button type="button" onClick={handleDelete} className="btn btn-clean">Eliminar</button>
+              <button type="button" onClick={() => handleDelete(inputValue.toUpperCase())} className="btn btn-clean">Eliminar</button>
             </div>
 
             <div>

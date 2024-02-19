@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+ 
 
 const useGetCountry = () => {
     const [country, setCountries] = useState({
@@ -38,16 +39,22 @@ const useGetCountry = () => {
         .then(data => {
           if (data.data.country) {
             setCountries(data.data.country)
+          } else {
+            // alert("Country not found")
           }
+          
+          
         })
     }, [code])
     
 
-
+    
     return {
         country,
+        
         setCode
     }
+    
 }
 
 export default useGetCountry

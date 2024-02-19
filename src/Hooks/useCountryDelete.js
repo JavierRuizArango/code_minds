@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+ function useCountryDelete() { 
 
-function useCountryDelete() {
-  const [codeCountry, setCodeCountry] = useState("");
-  useEffect(() => {
-    fetch(`http://localhost:3001/country/${codeCountry}`, {
+  const handleDelete = (code) => {
+    fetch(`http://localhost:3001/country/${code}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   })
@@ -14,15 +12,17 @@ function useCountryDelete() {
       return response.json();
     })
     .then((data) => {
+      alert("Country deleted successfully");
       console.log("Respuesta de la API:", data);
     })
     .catch((error) => {
       console.error("Error en la solicitud:", error);
     });
-  }, [codeCountry]);
-  
+  }
+   
+   
 
-  return { setCodeCountry };
+  return { handleDelete };
 }
 
 export default useCountryDelete
