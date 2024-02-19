@@ -30,9 +30,9 @@ main {
 .logo-container {
   border-radius: 5px;
   text-align: center;
-  border: 1px #dbdbdb solid;
-  background-color: #dbdbdb;
-  color: #656565;
+  border: 0px #dbdbdb solid;
+  /* background-color: #dbdbdb;
+  color: #656565; */
 }
 
 .sidebar>nav {
