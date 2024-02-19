@@ -102,7 +102,7 @@ export default function Manage() {
             </div>
 
             <div>
-              <input type="submit" value="Actualizar" className="btn btn-create" />
+              <input type="submit" value="Limpiar" onClick={handleReset} className="btn btn-create" />
             </div>
 
           </form>

@@ -30,32 +30,43 @@ export default function Create() {
 
    
 
-  const { country, setCode } = useGetCountry()
+  const { country, handleConsult } = useGetCountry()
   const [inputValue, setInputValue] = useState("")
 
-  const handleClick = () => {
-    setCode(inputValue.toUpperCase())
-  }
   console.log('---- country ----', country);
 
-  const handleClickCreate = () => {
-    fetch('http://localhost:3001', {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(country)
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error en la solicitud: ${response.status}");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Respuesta de la API:", data);
-      })
-      .catch((error) => {
-        console.error("Error en la solicitud:", error);
-      });
+  const handleClickCreate = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/country/${inputValue.toUpperCase()}`)
+      if (response.ok) {
+        alert("Pais ya esta creado");
+      }else{
+        fetch('http://localhost:3001', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(country)
+    
+        })
+          .then((response) => {
+            if (!response.ok) {
+              alert("Pais no creado");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Respuesta de la API:", data);
+            alert("Pais creado con exito");
+          })
+          .catch((error) => {
+            console.error("Error en la solicitud:", error);
+          });
+      }
+    }
+    catch (error) {
+      console.error(error);
+    }
+    
+
   }
 
 
@@ -72,7 +83,7 @@ export default function Create() {
             <label htmlFor="cod-search"> Código País </label>
             <input type="text" className="custom-input" name="cod-search" maxLength={2} onChange={(e) => setInputValue(e.target.value)} />
 
-            <input  value="Consultar" className="btn" onClick={handleClick} />
+            <input  value="Consultar" className="btn" onClick={() => handleConsult(inputValue.toUpperCase())} />
           </form>
 
         </div>

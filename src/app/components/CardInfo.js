@@ -12,26 +12,25 @@ const CardInfo = ( {country, close} ) => {
 
   useEffect(() => {
     const API_KEY = '42373212-afb7a6136c21eddaf8f4e3382';
-    const countryName = country.name.replace(/\s+/g, '+'); // Reemplaza los espacios en blanco con '+' para el formato de URL
+    const countryName = country.name; 
     const category = 'places, city'; 
-    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent( countryName)}&image_type=photo&category=${category}   `;
+    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${countryName}&image_type=photo&category=${category}`;
 
     fetch(URL)
       .then(response => response.json())
       .then(data => {
         if (parseInt(data.totalHits) > 0) {
-            // Iterar sobre los resultados para encontrar la primera imagen que sea un lugar
+            
             for (let i = 0; i < data.hits.length; i++) {
               const imageTags = data.hits[i].tags.toLowerCase();
-              // Verificar si las etiquetas incluyen la palabra "place" o "city"
+              
               if (imageTags.includes('places') || imageTags.includes('city') || imageTags.includes('capital')) {
                 setImageUrl(data.hits[i].webformatURL);
-                return; // Detener la iteración y salir del bucle cuando se encuentre la primera imagen de un lugar
+                return; 
               }
             }
             setImageUrl(data.hits[0].webformatURL);
-            // Si no se encuentra imagen para no dejarla vacia poner una imagen por defecto igual referente al pais
-            // Si no se encontró ninguna imagen de un lugar, mostrar un mensaje de error
+            
             console.log(`No se encontraron imágenes de lugares para ${country.name}`);} else {
           console.log(`No se encontraron imágenes para ${country.name}`);
         }
