@@ -15,12 +15,12 @@ export default function CountryCard({ country, onClick }) {
     const API_KEY = '42373212-afb7a6136c21eddaf8f4e3382';
     const countryName = country.name.replace(/\s+/g, '+'); // Reemplaza los espacios en blanco con '+' para el formato de URL
     const category = 'places, city'; 
-    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent( countryName)}&image_type=photo&category=${category}   `;
+    const URL = `https://pixabay.com/api/?key=${API_KEY}&q=${( countryName)}&image_type=photo&category=${category}   `;
 
     fetch(URL)
       .then(response => response.json())
       .then(data => {
-        if (parseInt(data.totalHits) > 0) {
+        if (data.totalHits > 0) {
             // Iterar sobre los resultados para encontrar la primera imagen que sea un lugar
             for (let i = 0; i < data.hits.length; i++) {
               const imageTags = data.hits[i].tags.toLowerCase();
