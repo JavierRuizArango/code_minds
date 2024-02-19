@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 
 import useGetCountry from '@/Hooks/useGetCountry';
+import Swal from 'sweetalert2';
 
 export default function Create() {
   const [form, setForm] = useState({
@@ -39,7 +40,23 @@ export default function Create() {
     try {
       const response = await fetch(`http://localhost:3001/country/${inputValue.toUpperCase()}`)
       if (response.ok) {
-        alert("Pais ya esta creado");
+        
+        
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "error",
+          title: "country ya existe"
+        });
       }else{
         fetch('http://localhost:3001', {
           method: "POST",
@@ -49,13 +66,43 @@ export default function Create() {
         })
           .then((response) => {
             if (!response.ok) {
-              alert("Pais no creado");
+              
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "error",
+          title: "country not created"
+        });
             }
             return response.json();
           })
           .then((data) => {
             console.log("Respuesta de la API:", data);
-            alert("Pais creado con exito");
+            
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "country created"
+        });
           })
           .catch((error) => {
             console.error("Error en la solicitud:", error);
