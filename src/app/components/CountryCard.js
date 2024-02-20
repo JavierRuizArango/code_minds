@@ -29,8 +29,7 @@ export default function CountryCard({ country, onClick }) {
               }
             }
             setImageUrl(data.hits[0].webformatURL);
-            console.log(`No se encontraron imágenes de lugares para ${country.name}`);} else {
-          console.log(`No se encontraron imágenes para ${country.name}`);
+            
         }
       })
       .catch(error => console.error('Error fetching images:', error));

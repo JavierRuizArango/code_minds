@@ -53,19 +53,7 @@ app.post("/", (req, res) =>{
   Country.create(body)
   res.json(body)
 })
-
-app.put("/code:", async(req, res) => {
-
-  try {
-    
-  const code = req.params.code;
-  const updateData = req.body;
-  const update = await Country.updateOne({ "code": code }, { $set: updateData });
-  } catch (error) {
-    console.log(error);
-  }
-})
-
+ 
 app.delete("/country/:code", async (req, res) => {
   const { code } = req.params
   const country = await Country.findOneAndDelete( {code : code})

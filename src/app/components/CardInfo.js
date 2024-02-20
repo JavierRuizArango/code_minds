@@ -57,11 +57,10 @@ const CardInfo = ( {country, close} ) => {
                     <p>{country.continent.name}</p>
                 </div>
             </div>
-              <div>
+              <div className='card-info-content'>
                 <p><strong>Capital:</strong>   {country.capital}</p>
                 <p><strong>Languague:</strong>   {country?.languages?.[0]?.name}</p>
-                <p><strong>Currency:</strong>   {country.currency}</p>
-                <p><strong>Region:</strong>   {country.region}</p>
+                <p><strong>Currency:</strong>   {country.currency}</p> 
 
               </div>
             <div>

@@ -15,9 +15,7 @@
     const countriesPerPage = 9;
 
     const indexOfLastCountry = currentPage * countriesPerPage;
-    // Calcular el índice del primer país en la página actual
     const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    // Obtener los países que se mostrarán en la página actual
     const currentCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
   
     useEffect(() => {
@@ -29,8 +27,7 @@
         setCurrentPage(currentPage + 1);
       }
     };
-  
-    // Cambiar a la página anterior
+   
     const paginatePrev = () => {
       if (currentPage > 1) {
         setCurrentPage(currentPage - 1);
@@ -41,8 +38,11 @@
       <>
         <div>
           <div className="search-container">
+
             <input className="search-input" type="text" placeholder="Encuentra tu pais" onChange={(e) => setInputValue(e.target.value)}></input>
-            <button onClick={() => setFilterContinent(!filterContinent)}>Filtrar por continente</button>
+
+            <button className="button-continent" onClick={() => setFilterContinent(!filterContinent)}>Filtrar Continente</button>
+
           </div>
           {filterContinent ? <FilterContinent setCodeContinentController={setCodeContinentController}/> : null}
           {console.log('countries since home', countries)}
@@ -73,14 +73,14 @@
             )}
           </section>
           {selecCountry ? <CardInfo country={selecCountry} close={() => setSelectCountry(false)} /> : null}
-          
-          <div>
-            <button onClick={paginatePrev} disabled={currentPage === 1}>Anterior</button>
-            <button onClick={paginateNext} disabled={indexOfLastCountry >= countries.length}>Siguiente</button>
+            
+          <div className="buttons-navegation">
+            <button onClick={paginatePrev} disabled={currentPage === 1}>⬅️</button>
+            <button onClick={paginateNext} disabled={indexOfLastCountry >= countries.length}>➡️</button>
           </div>
 
-
         </div>
+        
       </>
     )
   }

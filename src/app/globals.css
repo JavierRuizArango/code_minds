@@ -91,6 +91,7 @@ main {
   display: grid;
   width: 260px;
   max-height: 160px;
+  transition: all 0.5s;
   
 }
 
@@ -131,13 +132,27 @@ main {
   position: absolute;
   bottom: 0;
   right: 0;
-  height: 590px;
+  height: 570px;
   width: 370px;
   background-color: rgb(253, 254, 254);
   border-radius: 5px;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 3rem;
+  padding-right: 3rem;
   padding-top: 25px;
+   
+}
+ .card-info button {
+   cursor: pointer;
+ }
+.card-info-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto 20px;
+}
+.card-info-content strong {
+  color: #029dff;
+  font-size: 17px;
+
 }
 
 .image-card {
@@ -175,18 +190,66 @@ main {
 
 .filterContinent {
   position: absolute;
-  top: 120px;
-  padding: 30px;
-  height: 280px;
+  top: 100px;
+  padding: 10px;
+  height: 300px;
   border: 1px solid ;
-  background-color: #029dff;
-  border-radius: 3rem;
+  background-color: #c9cccf;
+  border-radius: 2rem;
   z-index: 9999;
-  right: 0;
+  right: 0; 
+  display: flex;
+  flex-direction: column;
+  width: 250px;
 }
 
+.filterContinent h1 {
+  font-size: 25px;
+  
+}
+
+.filterContinent button {
+  cursor: pointer;
+   
+  border-radius: 3rem;
+  padding: 3px;
+  border: ridge;
+
+}
+.button-continent {
+  cursor: pointer;
+  background-color: #66b9ec;
+  border-radius: 3rem;
+  padding: 10px;
+  border: none;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 10px;
+  width: 100px;
+  text-align: center;
+  transition: all 0.5s;
+}
+.button-continent:hover { 
+  background-color: #51afea;
+  transition: all 0.5s;
+  scale: 0.95;
+}
+
+.buttons-navegation button {
+  cursor: pointer;
+  background-color: #66b9ec;
+  border-radius: 2rem;
+  padding: 8px;
+  border: none;
+
+}
 .filterContinent button:hover {
   cursor: pointer;
+}
+
+.filterContinent h1 {
+  color: #fff;
 }
 
 .row {

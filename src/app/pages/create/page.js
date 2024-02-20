@@ -55,7 +55,7 @@ export default function Create() {
         });
         Toast.fire({
           icon: "error",
-          title: "country ya existe"
+          title: `El país ${country.name} ya existe`
         });
       }else{
         fetch('http://localhost:3001', {
@@ -80,7 +80,7 @@ export default function Create() {
         });
         Toast.fire({
           icon: "error",
-          title: "country not created"
+          title: "País no creado"
         });
             }
             return response.json();
@@ -101,7 +101,7 @@ export default function Create() {
         });
         Toast.fire({
           icon: "success",
-          title: "country created"
+          title: `País ${country.name} creado con éxito!`
         });
           })
           .catch((error) => {

@@ -28,7 +28,7 @@ import Swal from "sweetalert2";
       });
       Toast.fire({
         icon: "success",
-        title: "country deleted"
+        title: "País eliminado correctamente"
       });
       console.log("Respuesta de la API:", data);
     })

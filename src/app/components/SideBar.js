@@ -24,8 +24,8 @@ function App() {
             <div className="sidebar">
                 <div className="logo-container">
                     <img src="https://codemindsacademy.com/wp-content/uploads/2023/07/Logo-Code-Minds.png" 
-                    width={310}
-                    height={200}
+                    width={120}
+                    height={90}
                     />
                 </div>
                 <nav>
