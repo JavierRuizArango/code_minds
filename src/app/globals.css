@@ -24,10 +24,14 @@ body {
   border-radius: 5px;
   text-align: center;
   border: 0px #dbdbdb solid;
+  
   /* background-color: #dbdbdb;
   color: #656565; */
 }
-
+.logo-container img {
+  width: 50%;
+  height: 50%;
+}
 .sidebar>nav {
   display: flex;
   flex-direction: column;
